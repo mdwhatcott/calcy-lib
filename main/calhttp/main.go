@@ -14,7 +14,7 @@ func main() {
 	http.Handle("/sub", NewHandler(calcy.Subtraction{}))
 	http.Handle("/mul", NewHandler(calcy.Multiplication{}))
 	http.Handle("/div", NewHandler(calcy.Division{}))
-	http.Handle("/bog", NewHandler(calcy.Bogus{}))
+	http.Handle("/bog", NewHandler(calcy.Bogus{Offset: 42}))
 
 	log.Println("Listening on localhost:8080")
 	err := http.ListenAndServe("localhost:8080", nil)

@@ -28,7 +28,7 @@ var calculators = map[string]calcy.Calculator{
 	"-": calcy.Subtraction{},
 	"*": calcy.Multiplication{},
 	"/": calcy.Division{},
-	"?": calcy.Bogus{},
+	"?": calcy.Bogus{Offset: 42},
 }
 
 type CSVHandler struct {
