@@ -1,42 +1,31 @@
 package main
 
 import (
-	"fmt"
+	"flag"
 	"log"
 	"os"
-	"strconv"
 
 	"calcy"
+	"calcy/handlers"
 )
 
 func main() {
-	var calculator calcy.Addition
-	handler := NewCLIHandler(calculator)
-	err := handler.Handle(os.Args)
+	var op string
+	flag.StringVar(&op, "op", "+", "Pick one: + - * / ?")
+	flag.Parse()
+
+	handler := handlers.NewCLIHandler(calculators[op], os.Stdout)
+
+	err := handler.Handle(flag.Args())
 	if err != nil {
 		log.Fatalln(err)
 	}
 }
 
-type CLIHandler struct {
-	calc calcy.Calculator
-}
-
-func NewCLIHandler(calculator calcy.Calculator) *CLIHandler {
-	return &CLIHandler{calc: calculator}
-}
-
-func (this *CLIHandler) Handle(args []string) error {
-	a, err := strconv.Atoi(args[1])
-	if err != nil {
-		return err
-	}
-
-	b, err := strconv.Atoi(args[2])
-	if err != nil {
-		return err
-	}
-
-	fmt.Println(this.calc.Calculate(a, b))
-	return nil
+var calculators = map[string]calcy.Calculator{
+	"+": calcy.Addition{},
+	"-": calcy.Subtraction{},
+	"*": calcy.Multiplication{},
+	"/": calcy.Division{},
+	"?": calcy.Bogus{Offset: 42},
 }
