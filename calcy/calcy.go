@@ -1,9 +1,5 @@
 package calcy
 
-type Calculator interface {
-	Calculate(a, b int) int
-}
-
 type Addition struct{}
 type Subtraction struct{}
 type Multiplication struct{}
