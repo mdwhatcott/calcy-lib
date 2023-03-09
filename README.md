@@ -130,3 +130,16 @@ $ curl -v "http://localhost:8080/mul?a=3&b=4"
 ## Task 12
 
 Start over and implement all of the above from scratch, keeping everything well-tested and as clean as possible.
+
+
+---
+
+Other possibilities:
+
+- Make the Calculator interface variadic: `type Calculator interface { Calculate(...int) int }` (Is this a breaking change?)
+- Make the Calculator interface generic:  `type Calculator interface { Calculate[T Numeric](...T) T }` (Is this a breaking change?)
+- Convert the CSV handler into a client of the HTTP handler
+- Make the CSV handler concurrent, sending up to N requests at a time.
+- Rewrite the tests using gunit.
+- Write integration tests that compile and invoke each executable.
+- Rewrite a few components via TDD.
