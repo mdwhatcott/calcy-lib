@@ -137,7 +137,6 @@ Start over and implement all of the above from scratch, keeping everything well-
 Other possibilities:
 
 - Make the Calculator interface variadic: `type Calculator interface { Calculate(...int) int }` (Is this a breaking change?)
-- Make the Calculator interface generic:  `type Calculator interface { Calculate[T Numeric](...T) T }` (Is this a breaking change?)
 - Convert the CSV handler into a client of the HTTP handler
 - Make the CSV handler concurrent, sending up to N requests at a time.
 - Rewrite the tests using gunit.
